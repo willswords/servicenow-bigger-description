@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ServiceNow Bigger Case Description</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --text: #1f2328;
+    --muted: #59636e;
+    --border: #d1d9e0;
+    --accent: #1f6feb;
+    --ok: #1a7f37;
+    --error: #cf222e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1f2328;
+      --text: #e6edf3;
+      --muted: #9198a1;
+      --border: #3d444d;
+      --accent: #4493f8;
+      --ok: #3fb950;
+      --error: #f85149;
+    }
+  }
+  body {
+    margin: 0;
+    padding: 20px 16px;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.5 system-ui, sans-serif;
+    max-width: 520px;
+  }
+  label { display: block; font-weight: 600; margin-bottom: 4px; }
+  .hint { color: var(--muted); font-size: 13px; margin: 4px 0 0; }
+  .field { margin-bottom: 20px; }
+  input, textarea {
+    box-sizing: border-box;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 8px;
+  }
+  input { width: 120px; }
+  textarea { width: 100%; min-height: 90px; font-family: ui-monospace, monospace; }
+  input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .actions { display: flex; align-items: center; gap: 12px; }
+  button {
+    font: inherit;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  #status { font-size: 13px; }
+  #status.ok { color: var(--ok); }
+  #status.error { color: var(--error); }
+</style>
+</head>
+<body>
+  <div class="field">
+    <label for="height">Minimum editor height (px)</label>
+    <input id="height" type="number" min="100" max="3000" step="10">
+    <p class="hint">Editors can still be dragged or grow taller than this.</p>
+  </div>
+
+  <div class="field">
+    <label for="fields">Fields to enlarge</label>
+    <textarea id="fields" spellcheck="false"></textarea>
+    <p class="hint">One per line. Any rich-text editor whose field ID contains one of these is enlarged,
+      e.g. <code>html_rich_description</code>. Removing a field takes effect after the page is reloaded.</p>
+  </div>
+
+  <div class="actions">
+    <button id="save" class="primary">Save</button>
+    <button id="reset">Restore defaults</button>
+    <span id="status" role="status"></span>
+  </div>
+
+  <script src="defaults.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

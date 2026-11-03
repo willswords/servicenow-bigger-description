@@ -1,0 +1,3 @@
+﻿# Built by build.ps1, or zipped by hand for store uploads
+dist/
+*.zip

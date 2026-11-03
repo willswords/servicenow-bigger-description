@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ServiceNow Bigger Case Description",
+  "version": "2026.11.3",
+  "description": "Makes rich-text editors on ServiceNow cases taller, with an adjustable height.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.service-now.com/*"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://*.service-now.com/*"],
+      "js": ["defaults.js", "bridge.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "servicenow-bigger-description@extension",
+      "strict_min_version": "128.0"
+    }
+  }
+}
